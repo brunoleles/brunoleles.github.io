@@ -5,9 +5,11 @@ import * as THREE from 'three'
 import PlayerGeometry from './PlayerGeometry'
 import PlayerMesh from './PlayerGeometry'
 import WorldScene from './scenes/WorldScene'
-import { PlaneGeometry } from 'three'
+import { PlaneGeometry, ImageLoader, PlaneBufferGeometry, Vector3 } from 'three'
 
-import './textures/grass.jpg'
+import KeyboardManager from './KeyboardManager'
+let keyboard_manager = new KeyboardManager();
+keyboard_manager.bind(document.body);
 
 //init renderer
 let renderer = new THREE.WebGLRenderer()
@@ -20,14 +22,22 @@ let scene = new WorldScene()
 
 // create the camera
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-camera.position.x = 5
+camera.position.x = 0
 camera.position.y = 5
 camera.position.z = 5
 
+
+let texture = THREE.ImageUtils.loadTexture('/textures/grass.jpg');
+texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+texture.repeat.set(585, 585);
+
+
 let material = new THREE.MeshBasicMaterial({
-	color: 0xaaaaaa,
-	wireframe: true
+	// color: 0xaaaaaa,
+	// wireframe: true,
+	map: texture,
 })
+
 
 
 
@@ -35,13 +45,15 @@ let material = new THREE.MeshBasicMaterial({
 let player = new PlayerMesh()
 player.position.x = 0.5
 player.rotation.y = 0.5
-scene.add(player)
+scene.add(player);
 
 
 
-let floor = new THREE.Mesh(new PlaneGeometry(100, 100));
-floor.rotation.x = - Math.PI / 2;
-scene.add(floor);
+let floor = new THREE.Mesh(new PlaneBufferGeometry(30, 30))
+floor.rotation.x = - Math.PI / 2
+floor.material = material
+floor.scale.set(100, 100, 100)
+scene.add(floor)
 
 // time util variables
 
@@ -66,12 +78,30 @@ function animate(): void {
 }
 
 function render(): void {
-	player.position.y = 4 * Math.sin(runn_time * 1)
-	player.rotation.x += 0.1
+	
+	if (keyboard_manager.is_key_down(keyboard_manager.KEY_UP)) {
+		player.translateOnAxis(new Vector3(0, 0, 1), 1 * delt_time);
+	}
 
+	if (keyboard_manager.is_key_down(keyboard_manager.KEY_DOWN)) {
+		player.translateOnAxis(new Vector3(0, 0, -1), 1 * delt_time);
+	}
+
+
+	if (keyboard_manager.is_key_down(keyboard_manager.KEY_LEFT)) {
+		player.translateOnAxis(new Vector3(-1, 0, 0), 1 * delt_time);
+	}
+
+	if (keyboard_manager.is_key_down(keyboard_manager.KEY_RIGHT)) {
+		player.translateOnAxis(new Vector3(1, 0, 0), 1 * delt_time);
+	}
+
+	// player.position.y = 1 + 1 * Math.sin(runn_time * 10)
+	// player.rotation.x += 0.1
+
+	camera.position.x = Math.PI * 2 * Math.sin(runn_time * .2)
+	camera.position.z = Math.PI * 2 * Math.cos(runn_time * .2)
 	camera.lookAt(player.position)
-	camera.position.x = Math.PI * 2 * Math.sin(runn_time)
-	camera.position.z = Math.PI * 2 * Math.cos(runn_time)
 
 	renderer.render(scene, camera)
 }
