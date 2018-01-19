@@ -6,6 +6,7 @@
     "babylonjs": "^3.2.0-alpha4",
     "ts-loader": "^3.2.0",
     "tsify": "^3.0.4",
-    "typescript": "^2.6.2"
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
   }
 }
