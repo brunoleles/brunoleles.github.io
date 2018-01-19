@@ -1,65 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-	<title>Hi</title>
-	<style>
-		body {
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			padding: 0;
-			background: black;
-		}
+  <meta charset="UTF-8">
+  <title>babylon.js tests</title>
 
-		.le-container {
-			display: flex;
-			position: absolute;
-
-			flex: 1;
-			align-items: center;
-			justify-content: center;
-
-			width: 100%;
-			height: 100%;
-		}
-
-		.le-hi {
-			background: white;
-
-			display: flex;
-			align-items: center;
-			justify-content: center;
-
-			min-width: 180px;
-			min-height: 180px;
-
-			transform: rotate(.45deg);
-		}
-	</style>
+  <link rel="stylesheet" href="css/lib/reset.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
-	<div class="le-container">
-		<div class="le-hi">
-			<!-- Hi -->
-		</div>
-	</div>
-</body>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-<script>
-	$(function () {
-		var n = 1;
-		$('body').click(function () {
-			for (var i = 0; i < n; i++) {
-				setTimeout(function () { $('body').css('background', '#' + Math.floor(Math.random() * 0xffffff).toString(16)); }, i * 42);
-			}
-			n += .42;
-		});
-	});
-</script>
+  <canvas id="canvas"></canvas>
 
+  <script type="text/javascript" src="lib/babylon.js"></script>
+  <script type="text/javascript" src="lib/oimo.min.js"></script>
+  <script type="text/javascript" src="bundle.js"></script>
+</body>
 </html>
