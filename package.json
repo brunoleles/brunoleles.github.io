@@ -1,5 +1,11 @@
 {
+  "scripts": {
+    "game": "tsc --watch --pretty --out ./build/script/game/main.js ./src/game/main.ts"
+  },
   "devDependencies": {
-    "babylonjs": "^3.2.0-alpha4"
+    "babylonjs": "^3.2.0-alpha4",
+    "ts-loader": "^3.2.0",
+    "tsify": "^3.0.4",
+    "typescript": "^2.6.2"
   }
 }
