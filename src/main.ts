@@ -1,10 +1,10 @@
-var stats = require('./utils/stats');
+import stats from './utils/stats';
 
-var engine = require('./engine/engine');
-var scene = require('./engine/scene');
+import engine from './engine/engine';
+import scene from './engine/scene';
 
 // Create a new player
-var player = require('./player');
+var player = import('./player');
 
 // Add a sun point light
 var sun = new BABYLON.DirectionalLight(
@@ -40,7 +40,7 @@ shadowGenerator.getShadowMap().renderList.push(ball);
 shadowGenerator.getShadowMap().renderList.push(box);
 
 // Setup time vars
-var prevTime, currentTime, deltaTime = 0;
+var prevTime: number, currentTime: number, deltaTime: number = 0;
 prevTime = currentTime = Date.now();
 
 engine.runRenderLoop(function () {

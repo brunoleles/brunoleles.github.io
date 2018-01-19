@@ -8,30 +8,30 @@ var gulp = require('gulp'),
 	buffer = require('vinyl-buffer'),
 	rename = require('gulp-rename'),
 	browserify = require('browserify'),
-	download = require('gulp-download');
+	download = require('gulp-download'),
+	ts = require('gulp-typescript');
+
+var tsProject = ts.createProject('./tsconfig.json');
 
 gulp.task('copylibs', function () {
-	gulp.src('./node_modules/babylonjs/babylon.js')
-		.pipe(gulp.dest('lib/'));
-
-	gulp.src('./node_modules/cannon/build/cannon.min.js')
-		.pipe(gulp.dest('lib/'));
+	gulp.src('./node_modules/babylonjs/babylon.js').pipe(gulp.dest('lib/'));
+	gulp.src('./node_modules/cannon/build/cannon.min.js').pipe(gulp.dest('lib/'));
 });
 
-gulp.task('oimo', function () {
-	// At the time of writing, Oimo.js doesn't have an official NPM or bower package, and the most official build source I can find is the build directory in the
-	// build directory of it's GitHub repository.
-	try {
-		fs.accessSync('lib/oimo.min.js', fs.F_OK);
-		// If the file is already accessible (doesn't error), do nothing
-		console.log('Oimo.js already exists - skipping download.');
-	} catch (e) {
-		download('https://raw.githubusercontent.com/lo-th/Oimo.js/gh-pages/build/oimo.min.js')
-			.pipe(gulp.dest('lib/'));
-	}
-});
+// gulp.task('oimo', function () {
+// 	// At the time of writing, Oimo.js doesn't have an official NPM or bower package, and the most official build source I can find is the build directory in the
+// 	// build directory of it's GitHub repository.
+// 	try {
+// 		fs.accessSync('lib/oimo.min.js', fs.F_OK);
+// 		// If the file is already accessible (doesn't error), do nothing
+// 		console.log('Oimo.js already exists - skipping download.');
+// 	} catch (e) {
+// 		download('https://raw.githubusercontent.com/lo-th/Oimo.js/gh-pages/build/oimo.min.js')
+// 			.pipe(gulp.dest('lib/'));
+// 	}
+// });
 
-gulp.task('browserify', ['es6', 'copylibs', 'oimo'], function () {
+gulp.task('browserify', ['es6', 'copylibs'], function () {
 	var bundleStream = browserify({ entries: 'main.js', debug: true, basedir: './build' }).bundle();
 
 	return bundleStream
@@ -42,7 +42,9 @@ gulp.task('browserify', ['es6', 'copylibs', 'oimo'], function () {
 });
 
 gulp.task('es6', function () {
-	return gulp.src("src/**/*.js")
+	// return gulp.src("src/**/*.js")
+	return gulp.src("src/**/*.ts")
+		.pipe(tsProject())
 		.pipe(babel())
 		.pipe(gulp.dest("build"));
 });

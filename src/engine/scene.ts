@@ -1,4 +1,6 @@
-var engine = require('./engine');
+// declare var BABYLON: any;
+
+import engine from './engine';
 
 // Setup the scene with physics
 var scene = new BABYLON.Scene(engine);
@@ -7,4 +9,4 @@ scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
 scene.collisionsEnabled = true;
 scene.enablePhysics();//null, new BABYLON.OimoJSPlugin());
 
-module.exports = scene;
+export default scene;

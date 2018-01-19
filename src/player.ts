@@ -1,4 +1,7 @@
-var scene = require('./engine/scene');
+declare var BABYLON: any;
+declare var canvas: any;
+
+var scene: any = import('./engine/scene');
 
 // Add first person player camera with physics
 var camera = new BABYLON.FreeCamera(
@@ -22,6 +25,6 @@ scene.activeCamera.keysRight.push(69); // E
 scene.activeCamera.keysRight.push(68); // D
 scene.activeCamera.speed = 0.8;
 
-module.exports = {
+export default {
   camera: camera
 };
