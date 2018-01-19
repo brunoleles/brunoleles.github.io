@@ -1,49 +1,39 @@
 {
-  "name": "babylonjs-boilerplate",
+  "name": "three-typescript-starter",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/main.js",
-  "dependencies": {
-    "@types/stats.js": "^0.17.0",
-    "browserify": "^13.0.0",
-    "jquery": "^2.2.0",
-    "stats.js": "0.0.14-master"
-  },
-  "devDependencies": {
-    "@types/jquery": "^3.2.18",
-    "babylonjs": "3.1.1",
-    "cannon": "^0.6.2",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.1",
-    "gulp-download": "0.0.1",
-    "gulp-livereload": "^3.8.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-typescript": "^4.0.0-alpha.1",
-    "http": "0.0.0",
-    "retyped-babylonjs-tsd-ambient": "^2.2.0-0",
-    "st": "^1.1.0",
-    "typescript": "^2.6.2",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
-  },
+  "description": "three.js + typescript",
+  "main": "index.js",
   "scripts": {
-    "dev": "node_modules/.bin/gulp"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --inline --open"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bdero/babylonjs-boilerplate.git"
+    "url": "git+https://github.com/pinqy520/three-typescript-starter.git"
   },
-  "keywords": [
-    "game",
-    "browser",
-    "es6",
-    "babylonjs",
-    "webgl"
-  ],
-  "author": "Brandon DeRosier",
-  "license": "GPL-3.0",
+  "keywords": [],
+  "author": "Huang Qi",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bdero/babylonjs-boilerplate/issues"
+    "url": "https://github.com/pinqy520/three-typescript-starter/issues"
   },
-  "homepage": "https://github.com/bdero/babylonjs-boilerplate#readme"
+  "homepage": "https://github.com/pinqy520/three-typescript-starter#readme",
+  "devDependencies": {
+    "awesome-typescript-loader": "latest",
+    "browser-sync": "latest",
+    "browser-sync-webpack-plugin": "latest",
+    "css-loader": "latest",
+    "extract-text-webpack-plugin": "latest",
+    "html-webpack-plugin": "latest",
+    "json-loader": "latest",
+    "progress-bar-webpack-plugin": "latest",
+    "style-loader": "latest",
+    "typescript": "latest",
+    "webpack": "latest",
+    "webpack-dev-server": "latest"
+  },
+  "dependencies": {
+    "@types/three": "latest",
+    "three": "latest"
+  }
 }

@@ -1,32 +1,23 @@
-Babylon.js Boilerplate
-======================
-A boilerplate project that serves as a scaffold for quickly setting up new
-[Babylon.js](https://github.com/BabylonJS/Babylon.js) projects.
+# Typescript Three.js Webpack Starter
 
-This includes a gulp pipeline which supports ES6 (via Babel) and automatically
-obtains the latest Babylon.js and Oimo.js (physics library) builds.
+- Typescript support.
+- Webpack
+- Html plugin
+- BrowserSync
 
+## Usage
 
-To use
-------
-1. Clone this repository: `git clone https://github.com/bdero/babylonjs-boilerplate.git`
-2. Install the dependencies: `npm install`
-3. Run the watcher using the **dev** command: `npm run dev`
-4. Navigate to **http://localhost:8080**
-5. Begin hacking on the code, and the watcher will automatically recompile on save.
+### Install Typscript
 
+```
+npm install typescript -g
+```
 
-License
--------
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+### Start
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+```
+$ git clone https://github.com/pinqy520/three-typescript-starter.git
+$ cd three-typescript-starter
+$ npm install # or yarn
+$ npm start
+```
