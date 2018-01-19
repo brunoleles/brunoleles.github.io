@@ -3,7 +3,8 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+	 crossorigin="anonymous">
 	<title>Hi</title>
 	<style>
 		body {
@@ -12,6 +13,8 @@
 			margin: 0;
 			padding: 0;
 			background: black;
+
+			transition: all .17s;
 		}
 
 		.le-container {
@@ -36,7 +39,7 @@
 			min-width: 180px;
 			min-height: 180px;
 
-			transform: rotate(.45deg);
+			transform: rotate(-2deg);
 		}
 	</style>
 </head>
@@ -48,15 +51,19 @@
 		</div>
 	</div>
 </body>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+ crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+ crossorigin="anonymous"></script>
 <script>
 	$(function () {
 		var n = 1;
 		$('body').click(function () {
-			for (var i = 0; i < n; i++) {
-				setTimeout(function () { $('body').css('background', '#' + Math.floor(Math.random() * 0xffffff).toString(16)); }, i * 42);
+			var i = 0;
+			for (; i < n; i++) {
+				setTimeout(function () { $('body').css('background', '#' + Math.floor(Math.random() * 0xffffff).toString(16)); }, i * 2 * 42);
 			}
+			setTimeout(function () { $('body').css('background', '#000000'); }, (i + 1) * 2 * 42);
 			n += .42;
 		});
 	});
