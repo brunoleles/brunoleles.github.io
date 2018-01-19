@@ -9,12 +9,17 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	browserify = require('browserify'),
 	download = require('gulp-download'),
+	rename = require("gulp-rename"),
 	ts = require('gulp-typescript');
 
 var tsProject = ts.createProject('./tsconfig.json');
 
 gulp.task('copylibs', function () {
-	gulp.src('./node_modules/babylonjs/babylon.js').pipe(gulp.dest('lib/'));
+	gulp
+		.src('./node_modules/babylonjs/dist/preview release/babylon.max.js')
+		.pipe(rename('babylon.js'))
+		.pipe(gulp.dest('./lib'));
+
 	gulp.src('./node_modules/cannon/build/cannon.min.js').pipe(gulp.dest('lib/'));
 });
 
