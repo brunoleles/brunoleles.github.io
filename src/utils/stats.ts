@@ -1,9 +1,8 @@
 
-const Stats = import('stats.js') as any;
+import * as Stats from 'stats.js';
 
 var stats = new Stats();
-
-stats.setMode(0);
+(<any>stats).setMode(0);
 
 // $('body').append(stats.domElement);
 
