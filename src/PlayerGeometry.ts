@@ -26,7 +26,7 @@ export default class PlayerMesh extends THREE.Object3D {
 
         let player_geometry = new PlayerGeometry();
         let player_material = new THREE.MeshBasicMaterial({ wireframe: true, color: '#ff0000', })
-        player_material = new THREE.MeshLambertMaterial({ color: '#ff0000', overdraw: .7 });
+        // player_material = new THREE.MeshLambertMaterial({ color: '#ff0000', overdraw: .7 });
         let player_mesh = new THREE.Mesh(player_geometry, player_material);
         player_mesh.position.set(0, .5, 0)
         this.add(player_mesh);

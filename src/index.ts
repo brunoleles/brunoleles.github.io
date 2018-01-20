@@ -93,21 +93,31 @@ function animate(): void {
 
 function render(): void {
 
+	game.world_direction = Game.DIR_NORT;
+	game.world_direction = Game.DIR_SOUTH;
+
+
 	if (keyboard_manager.is_key_down(keyboard_manager.KEY_UP)) {
-		player.position.add(Game.DIR_NORT.clone().multiplyScalar(player.move_speed * delt_time))
+		// let m = new THREE.Matrix4();
+		// m.makeRotationAxis(new Vector3(), Math.PI * 0);
+		player.position.add(game.world_direction.clone().applyAxisAngle(Game.DIR_ZERO, Math.PI * 0));
 	}
 
 	if (keyboard_manager.is_key_down(keyboard_manager.KEY_DOWN)) {
-		player.position.add(Game.DIR_SOUTH.clone().multiplyScalar(player.move_speed * delt_time))
+		player.translateOnAxis(Game.DIR_SOUTH, 1);
+		console.log((new Vector3(2, 0, 0)).normalize())
 	}
 
 
 	if (keyboard_manager.is_key_down(keyboard_manager.KEY_LEFT)) {
-		player.position.add(Game.DIR_WEST.clone().multiplyScalar(player.move_speed * delt_time))
+		// let m = new THREE.Matrix4();
+		// m.makeRotationAxis(new Vector3(), Math.PI /10);
+		// player.position.add(game.world_direction.clone().transformDirection(m));
+
 	}
 
 	if (keyboard_manager.is_key_down(keyboard_manager.KEY_RIGHT)) {
-		player.position.add(Game.DIR_EAST.clone().multiplyScalar(player.move_speed * delt_time))
+		// player.position.add(Game.DIR_EAST.clone().multiplyScalar(player.move_speed * delt_time))
 	}
 
 	// player.position.y = 1 + 1 * Math.sin(runn_time * 10)
