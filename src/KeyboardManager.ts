@@ -19,13 +19,13 @@ export default class KeyboardManager {
     on_keydonw(event: KeyboardEvent) {
         let key = event.keyCode || event.which;
         this.keydowns[key] = true;
-        event.preventDefault();
+        // event.preventDefault();
     }
 
     on_keyup(event: KeyboardEvent) {
         let key = event.keyCode || event.which;
         this.keydowns[key] = false;
-        event.preventDefault();
+        // event.preventDefault();
     }
 
     is_key_down(key: number | number[]): boolean {
