@@ -10,6 +10,8 @@ export class PlayerGeometry extends THREE.BoxGeometry {
 
 export default class PlayerMesh extends THREE.Object3D {
 
+    turret: THREE.Mesh;
+
     move_speed: number = .10;
 
     constructor() {
@@ -35,11 +37,16 @@ export default class PlayerMesh extends THREE.Object3D {
 
 
 
-        let cylinder_geometry = new THREE.CylinderGeometry(.1, .1, 2);
+        let cylinder_geometry = new THREE.CylinderGeometry(.1, .1, 1);
+        cylinder_geometry.rotateX(Math.PI / 2);
+        cylinder_geometry.translate(0, .5, 1);
+
         let cylinder_material = new THREE.MeshBasicMaterial({ wireframe: true, color: '#0ff000', })
         let cylinder_mesh = new THREE.Mesh(cylinder_geometry, cylinder_material);
-        cylinder_mesh.position.set(0, .5, .5);
-        cylinder_mesh.rotation.set(Math.PI/2, 0, 0);
+        // cylinder_mesh.position.set(0, .5, .5);
+        // cylinder_mesh.rotation.set(Math.PI/2, 0, 0);
         this.add(cylinder_mesh);
+
+        this.turret = cylinder_mesh;
     }
 }

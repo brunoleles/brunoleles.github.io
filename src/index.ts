@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import PlayerGeometry from './PlayerGeometry'
 import PlayerMesh from './PlayerGeometry'
 import WorldScene from './scenes/WorldScene'
-import { PlaneGeometry, ImageLoader, PlaneBufferGeometry, Vector3, Matrix4, Camera, Euler, CubeGeometry, MeshBasicMaterial } from 'three'
+import { PlaneGeometry, ImageLoader, PlaneBufferGeometry, Vector3, Matrix4, Camera, Euler, CubeGeometry, MeshBasicMaterial, SpriteMaterial } from 'three'
 
 (window as any).THREE = THREE;
 
@@ -72,11 +72,22 @@ geometry.faces.forEach((face, index) => { face.materialIndex = index % 2 })
 let floor = new THREE.Mesh(geometry)
 floor.rotation.x = - Math.PI / 2
 floor.material = new THREE.MeshFaceMaterial([m0, m1]);
-	// floor.scale.set(100, 100, 100)
-	// floor.rotateZ(Math.PI / 4);
-	scene.add(floor)
+// floor.scale.set(100, 100, 100)
+// floor.rotateZ(Math.PI / 4);
+scene.add(floor)
 
 
+let raycaster = new THREE.Raycaster();
+let mouse = new THREE.Vector2();
+let particle = new THREE.Mesh(new THREE.SphereGeometry(.2, .2), new THREE.MeshBasicMaterial({ color: '#ff0000' }));
+particle.scale.x = particle.scale.y = 1;
+// particle.position.copy(intersects[0].point);
+scene.add(particle);
+
+window.addEventListener('mousemove', (event) => {
+	mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
+	mouse.y = - (event.clientY / renderer.domElement.clientHeight) * 2 + 1;
+})
 
 
 
@@ -143,7 +154,9 @@ function render(): void {
 	}
 
 	// player.position.y = 1 + 1 * Math.sin(runn_time * 10)
-	// player.rotation.y += 0.1
+	let q = new THREE.Quaternion(0, 1, 0, 1);
+	// player.rotation.y += 0.1;
+	player.turret.lookAt(player.worldToLocal(particle.position));
 
 	// camera.position.copy(player.position).add(new THREE.Vector3(0, 10, -10));
 	// camera.position.x = player.position.x + Math.PI * 2 * Math.sin(runn_time * .2)
@@ -153,6 +166,15 @@ function render(): void {
 	camera.position.copy(player.position).add(new THREE.Vector3(0, 30, -15));
 
 	camera.lookAt(player.position)
+
+
+
+
+	raycaster.setFromCamera(mouse, camera);
+	let intersects = raycaster.intersectObjects([floor]);
+	if (intersects.length > 0) {
+		particle.position.copy(intersects[0].point);
+	}
 
 
 
