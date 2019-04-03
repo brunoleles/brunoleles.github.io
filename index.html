@@ -50,6 +50,7 @@
 <body>
 	<div class="le-container">
 		<div class="le-hi">
+			<!-- Hi -->
 			SOON?
 		</div>
 	</div>
@@ -62,12 +63,14 @@
 <script>
 	$(function () {
 		var n = 1;
-		var i = 0;
-		for (; i < n; i++) {
-			setTimeout(function () { $('body').css('background', '#' + Math.floor(Math.random() * 0xffffff).toString(16)); }, i * 2 * 42);
-		}
-		setTimeout(function () { $('body').css('background', '#000000'); }, (i + 1) * 2 * 42);
-		n += .42;
+		$('body').click(function () {
+			var i = 0;
+			for (; i < n; i++) {
+				setTimeout(function () { $('body').css('background', '#' + Math.floor(Math.random() * 0xffffff).toString(16)); }, i * 2 * 42);
+			}
+			setTimeout(function () { $('body').css('background', '#000000'); }, (i + 1) * 2 * 42);
+			n += .42;
+		});
 	});
 </script>
 
