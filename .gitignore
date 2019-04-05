@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -42,3 +43,7 @@ yarn.lock
 
 # awesome-typescript
 .awcache
+=======
+node_modules
+dist
+>>>>>>> master
