@@ -1,5 +1,8 @@
 {
   "devDependencies": {
-    "babylonjs": "^3.2.0-alpha4"
+    "babylonjs": "^3.2.0-alpha4",
+    "browser-sync": "^2.26.3",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }
